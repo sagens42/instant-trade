@@ -126,7 +126,6 @@ export default class InstantTrade extends Component {
                   <MenuItem onClick={this.handleCloseMultiplierMenu.bind(this, 0.01)}>x0.01</MenuItem>
                   <MenuItem onClick={this.handleCloseMultiplierMenu.bind(this, 0.1)}>x0.1</MenuItem>
                   <MenuItem onClick={this.handleCloseMultiplierMenu.bind(this, 1)}>x1</MenuItem>
-                  <MenuItem onClick={this.handleCloseMultiplierMenu.bind(this, 10)}>x10</MenuItem>
                 </Menu>
                 <TablePagination
                   colSpan={6}

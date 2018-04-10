@@ -91,14 +91,14 @@ class TokenExchangeContainer extends Component {
         order.contract
       );
       let result = await instantTrade.send({ from: this.account, value: new BigNumber(order.availableVolume.toString()).times(this.multiplier).times(TOKENSTORE_FEE) });
-      console.log(result);
     } catch (e) {
-      console.log(e);
+      this.orderBookStore.errorOnServer = e;
     }
   }
 
   async onSellAction(order) {
-    let TOKENSTORE_FEE = +process.env.TOKENSTORE_FEE + 1 || 1; // adding fee
+    try {
+      let TOKENSTORE_FEE = +process.env.TOKENSTORE_FEE + 1 || 1; // adding fee
       let instantTrade = this.contractInstance.methods.instantTrade(
         order.tokenGet,
         order.amountGet,
@@ -113,8 +113,11 @@ class TokenExchangeContainer extends Component {
         new BigNumber(order.availableVolume.toString()).times(this.multiplier),
         order.contract
       );
-      
+
       let result = await instantTrade.send({ from: this.account });
+    } catch (e) {
+      this.orderBookStore.errorOnServer = e;
+    }
   }
 
   onMultiplierChange(multiplier) {

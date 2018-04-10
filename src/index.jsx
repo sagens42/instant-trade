@@ -17,11 +17,13 @@ class App extends Component {
     }
 
    render() {
+      let tokenApiUrl = process.env.API_URL + process.env.TOKEN_CONTRACT;
+      console.log(process.env.API_URL, process.env.TOKEN_CONTRACT)
       return <div>
           <Provider orderBookStore={this.orderBookInstance}>
             <div>
               <InstantTradeContainer
-                symbolApiLink={process.env.TOKEN_API_URL}></InstantTradeContainer>
+                symbolApiLink={tokenApiUrl}></InstantTradeContainer>
             </div>
           </Provider>
       </div>;
