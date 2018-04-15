@@ -155,7 +155,7 @@ export default class InstantTrade extends Component {
               </TableRow>
             </TableHead>
             <TableBody>
-              {this.props.buyOrders && this.props.sellOrders.slice(pageSell * rowsPerPage, pageSell * rowsPerPage + rowsPerPage).map(n => {
+              {this.props.sellOrders && this.props.sellOrders.slice(pageSell * rowsPerPage, pageSell * rowsPerPage + rowsPerPage).map(n => {
                 let availableVolumeGet = n.availableVolume;
                 let availableVolumeGive = (n.amountGet / n.availableVolume) * n.amountGive;
                 return (

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import AppBar from 'material-ui/AppBar';
 import { Provider } from 'mobx-react';
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 
 import styles from './styles.jsx';
 import InstantTradeContainer from './containers/InstantTradeContainer.jsx';
@@ -14,19 +15,19 @@ class App extends Component {
       this.state = {
       };
       this.orderBookInstance = new OrderBookStore();
+      this.theme = createMuiTheme();
     }
 
    render() {
       let tokenApiUrl = process.env.API_URL + process.env.TOKEN_CONTRACT;
-      console.log(process.env.API_URL, process.env.TOKEN_CONTRACT)
-      return <div>
+      return <MuiThemeProvider theme={this.theme}>
           <Provider orderBookStore={this.orderBookInstance}>
             <div>
               <InstantTradeContainer
                 symbolApiLink={tokenApiUrl}></InstantTradeContainer>
             </div>
           </Provider>
-      </div>;
+        </MuiThemeProvider>;
    }
 }
 
